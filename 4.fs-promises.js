@@ -1,3 +1,5 @@
+// Este metodo es asincrono, se ejecuta todo al mismo tiempo pero con promesas (Promesas esa then y catch).
+
 const fs = require("node:fs/promises");
 
 console.log("Leyendo el primer archivo");

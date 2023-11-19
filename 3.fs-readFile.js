@@ -1,13 +1,14 @@
+// Es metodo e sincrono, se ejecuta una linea a la vez
+
+
 const fs = require("node:fs");
 
 console.log("Leyendo el primer archivo");
-fs.readFile("./archivo.txt", "utf-8", (err, data) => {
-  console.log(data);
-});
+const data = fs.readFileSync("./archivo.txt", "utf-8");
+console.log(data);
 
 console.log("Haciendo cosas mientras lee archivo");
 
 console.log("Leyendo el segundo archivo");
-fs.readFile("./archivo2.txt", "utf-8", (err, data) => {
-  console.log(data);
-});
+const data2 = fs.readFileSync("./archivo2.txt", "utf-8");
+console.log(data2);

@@ -1,6 +1,6 @@
 // En tu archivo principal
 const http = require("node:http"); // protocolo http
-const { findAvailablePort } = require("./10.free-port.js");
+const { findAvailablePort } = require("./10.free-port");
 
 const server = http.createServer((req, res) => {
   console.log("request received");

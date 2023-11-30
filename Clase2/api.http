@@ -4,6 +4,8 @@ GET http://localhost:1234/pokemon/ditto
 
 # Para crear un pokemon
 
+// Probando con Thunder Client poner en modo POST y pasarle el JSON
+
 POST http://localhost:1234/pokemon
 Content-Type: application/json
 {

@@ -7,7 +7,11 @@ const PORT = process.env.PORT ?? 1234;
 
 app.get("/", (req, res) => {
   //   res.status(200).send("<h1>Home</h1>"); Se puede anidar varias cosas (ej: status,send)
-  res.send("<h1>Home</h1>");
+  res.json({ message: "Home" });
+});
+
+app.post('/pokemon', (req, res) => {
+  
 });
 
 app.listen(PORT, () => {

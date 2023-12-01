@@ -1,6 +1,7 @@
 const express = require("express");
 const movies = require("./movies.json");
 const crypto = require("node:crypto");
+const { validateMovie } = require("./schemas/movies");
 
 const app = express();
 app.use(express.json()); // Para que express entienda el body de las peticiones POST
@@ -28,19 +29,17 @@ app.get("/movies/:id", (req, res) => {
 });
 
 app.post("/movies", (req, res) => {
-  const { title, year, director, duration, poster, genre, rate } = req.body;
+  const resultado = validateMovie(req.body);
+
+  if (resultado.error) {
+    return res.status(400).json({ error: JSON.parse(resultado.error.message) });
+  }
 
   const newMovie = {
     id: crypto.randomUUID(),
-    title: title,
-    year: year,
-    director: director,
-    duration: duration,
-    poster: poster,
-    genre: genre,
-    rate: rate ?? 0,
+    ...resultado.data,
   };
-  console.log(newMovie);
+  console.log(resultado);
   movies.push(newMovie);
 
   res.status(201).json(newMovie);

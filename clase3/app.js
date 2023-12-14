@@ -105,8 +105,24 @@ app.delete("/movies/:id", (req, res) => {
   return res.sendStatus(204);
 });
 
+app.options("/movies/:id", (req, res) => {
+  const origin = req.header("origin");
+
+  if (ACCEPTED_ORIGINS.includes(origin) || !origin) {
+    res.header("Access-Control-Allow-Origin", origin);
+    res.header("Access-Control-Allow-Methods", "GET,DELETE,OPTIONS,POST,PATCH,PUT");
+  }
+  res.send(200);
+});
+
 const PORT = process.env.PORT ?? 1234;
 
 app.listen(PORT, () => {
   console.log(`server listening on port http://localhost:${PORT}`);
 });
+
+
+// Hay una libreria para instalar CORS pero habilita a todos los origenes
+// npm i cors
+// const cors = require("cors");
+// app.use(cors()); // Para habilitar a todos los origenes

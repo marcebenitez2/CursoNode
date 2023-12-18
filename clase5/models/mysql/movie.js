@@ -119,8 +119,6 @@ export class MovieModel {
   }
   
   static async delete({ id }) {
-
-
     const [movies] = await connection.query(
       "DELETE FROM movies WHERE id = ?;",
       [id]
@@ -136,7 +134,7 @@ export class MovieModel {
 
   static async update({ id, input }) {
     const {
-      genre: genreInput,
+      genre,
       title,
       year,
       director,

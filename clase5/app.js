@@ -17,3 +17,6 @@ export const createApp = ({ MovieModel }) => {
     console.log(`server listening on port http://localhost:${PORT}`);
   });
 };
+
+
+//para crear un servidor, en un puerto posible o 1234
